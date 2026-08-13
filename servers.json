@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "docs": {
+      "command": "node",
+      "args": ["mock-servers/docs-server.js"]
+    },
+    "web": {
+      "command": "node",
+      "args": ["mock-servers/web-server.js"]
+    },
+    "sandbox": {
+      "command": "node",
+      "args": ["mock-servers/sandbox-server.js"]
+    }
+  }
+}
