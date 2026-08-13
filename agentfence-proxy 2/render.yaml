@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: agentfence-proxy
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm run start:http
+    autoDeploy: true
+    envVars:
+      - key: AGENTFENCE_TRANSPORT
+        value: http
+      # PORT is provided automatically by Render — do not set it here.
+      # Set this to your real landing-page origin before going live —
+      # left unset, /demo/* is CORS-open to '*' (fine for local testing,
+      # not for production; the server logs a warning if it's unset).
+      - key: AGENTFENCE_DEMO_ALLOWED_ORIGINS
+        value: https://agentfence.madethis.app
+      - key: AGENTFENCE_DEMO_RATE_MAX
+        value: "20"
+      - key: AGENTFENCE_DEMO_RATE_WINDOW_MS
+        value: "60000"
+      # Generate real random values for these two before going live —
+      # the defaults in code are dev-only placeholders.
+      - key: AGENTFENCE_SIGNING_SECRET
+        generateValue: true
+      - key: AGENTFENCE_DEMO_SIGNING_SECRET
+        generateValue: true

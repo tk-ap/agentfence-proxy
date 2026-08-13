@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "agent": "demo-research-agent",
+  "declaredTools": {
+    "docs": ["search", "read"],
+    "web": ["fetch"],
+    "sandbox": ["write"]
+  },
+  "rules": [
+    {
+      "id": "web-egress-allowlist",
+      "server": "web",
+      "tool": "fetch",
+      "constraint": {
+        "field": "args.url",
+        "type": "domain-allowlist",
+        "allow": ["docs.internal.example.com", "api.internal.example.com"]
+      }
+    },
+    {
+      "id": "sandbox-write-scope",
+      "server": "sandbox",
+      "tool": "write",
+      "constraint": {
+        "field": "args.path",
+        "type": "path-prefix-allowlist",
+        "allow": ["/workspace/"]
+      }
+    }
+  ]
+}
