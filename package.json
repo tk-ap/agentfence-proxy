@@ -1,0 +1,21 @@
+{
+  "name": "agentfence-proxy",
+  "version": "0.2.0",
+  "description": "Continuous containment-verification MCP proxy: policy enforcement, effective-permissions drift detection, signed evidence trail, and an adversarial probe engine.",
+  "main": "src/index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "demo": "node test/run-demo.js",
+    "stress": "node test/stress-test.js",
+    "test": "npm run demo && npm run stress",
+    "start": "node src/index.js",
+    "start:http": "AGENTFENCE_TRANSPORT=http node src/index.js",
+    "start:stdio": "AGENTFENCE_TRANSPORT=stdio node src/index.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
